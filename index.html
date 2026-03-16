@@ -53,6 +53,15 @@
   /* Water background for sea areas */
   .water-bg { fill: #d4e9f7; stroke: none; }
 
+  /* River paths */
+  .river-path {
+    fill: none;
+    stroke: #4a90d9;
+    stroke-width: 0.9px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
   .label {
     position: absolute; transform: translate(-50%, -50%);
     width: 17px; height: 17px; border-radius: 3px;
@@ -277,6 +286,30 @@
       <path class="province-path" data-province="Zuid-Holland" d="M 56.092937,155.86369 L 55.705627,156.25115 L 55.705627,156.25115 L 56.092937,156.25115 L 56.092937,156.25115 L 55.705627,156.25115 L 55.705627,156.63861 L 55.318307,156.25115 L 55.318307,156.25115 L 55.318307,156.25115 L 56.092937,155.86369 z"/>
       <path class="province-path" data-province="Noord-Brabant" d="M 82.817737,177.17406 L 82.817737,177.56152 L 83.205057,177.94898 L 83.205057,177.94898 L 83.205057,177.56152 L 83.205057,177.17406 L 83.592367,177.56152 L 83.592367,177.56152 L 83.205057,177.56152 L 83.205057,177.56152 L 83.205057,177.94898 L 83.205057,177.94898 L 83.592367,177.94898 L 83.592367,178.33644 L 83.592367,178.33644 L 83.592367,178.7239 L 83.592367,178.7239 L 83.205057,178.7239 L 82.817737,178.33644 L 82.430427,178.33644 L 82.817737,177.94898 L 82.430427,177.56152 L 82.430427,177.17406 L 82.817737,177.17406 L 82.817737,177.17406 z"/>
 
+      <!-- Rivers -->
+      <g id="rivers">
+        <!-- Waal (main Rhine branch, Lobith → Nijmegen → Gorinchem → Hollandsch Diep) -->
+        <path class="river-path" id="river-waal"
+          d="M 144,144 Q 137,145 131,146 Q 118,143 109,141 Q 97,144 87,147 Q 79,148 72,149 Q 60,151 48,149"/>
+        <!-- Neder-Rijn / Lek / Nieuwe Waterweg (Arnhem → Rotterdam → sea) -->
+        <path class="river-path" id="river-lek"
+          d="M 137,135 Q 120,133 104,133 Q 91,135 79,138 Q 73,140 70,141 Q 63,140 62,139 Q 50,136 35,132"/>
+        <!-- IJssel (Arnhem → Deventer → Zwolle → IJsselmeer) -->
+        <path class="river-path" id="river-ijssel"
+          d="M 137,135 Q 143,122 146,110 Q 144,99 143,88 Q 136,80 128,70"/>
+        <!-- Short connector: Rhine entry Lobith → IJsselkop split near Arnhem -->
+        <path class="river-path" id="river-rijn-entry"
+          d="M 144,144 Q 141,140 137,135"/>
+        <!-- Maas (Maastricht → Roermond → Venlo → Grave → Den Bosch → Gorinchem) -->
+        <path class="river-path" id="river-maas"
+          d="M 124,232 Q 132,215 138,200 Q 143,192 147,186 Q 141,171 135,160 Q 127,157 126,156 Q 113,158 105,159 Q 95,153 87,147"/>
+        <!-- Noordzeekanaal (Amsterdam → IJmuiden) -->
+        <path class="river-path" id="river-noordzeekanaal"
+          d="M 83,100 Q 69,97 55,93"/>
+        <!-- Amsterdam-Rijnkanaal (Amsterdam → Wijk bij Duurstede / Neder-Rijn) -->
+        <path class="river-path" id="river-amsterdam-rijnkanaal"
+          d="M 83,100 Q 90,116 104,133"/>
+      </g>
     </svg>
     <!-- Labels will be injected here by JS -->
     <div id="labels-container"></div>
