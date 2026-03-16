@@ -447,16 +447,26 @@ function handleLabelClick(item, el, e) {
 
 function showPopup(item, el) {
   const popup = document.getElementById('popup');
+
+  // Toggle: close if same label clicked again
+  if (popup.style.display === 'block' && popup._sourceEl === el) {
+    clearTimeout(popup._timer);
+    popup.style.display = 'none';
+    popup._sourceEl = null;
+    return;
+  }
+
   const rect = el.getBoundingClientRect();
   const wrapperRect = document.getElementById('map-wrapper').getBoundingClientRect();
 
   popup.textContent = item.id + ' = ' + item.name;
   popup.style.display = 'block';
+  popup._sourceEl = el;
   popup.style.left = (rect.left - wrapperRect.left + rect.width/2) + 'px';
   popup.style.top = (rect.top - wrapperRect.top - 5) + 'px';
 
   clearTimeout(popup._timer);
-  popup._timer = setTimeout(() => popup.style.display = 'none', 3000);
+  popup._timer = setTimeout(() => { popup.style.display = 'none'; popup._sourceEl = null; }, 3000);
 }
 
 // ===== CATEGORY FILTER =====
